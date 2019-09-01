@@ -26,9 +26,9 @@ class Api::V1::MuseumsController < Api::V1::BaseController
     @museums = policy_scope(Museum)
   end
 
-  def create
-    # @museums = Museum.new(museum_params)
-    p museum_params
+  def show
+    museums = Museum.find(params[:id])
+    render json: {data: museums}
   end
 
   private
