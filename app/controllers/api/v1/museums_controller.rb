@@ -1,4 +1,6 @@
 class Api::V1::MuseumsController < Api::V1::BaseController
+  before_action :set_museum, only: [ :show ]
+
   def index
 
   require 'json'
@@ -27,8 +29,12 @@ class Api::V1::MuseumsController < Api::V1::BaseController
   end
 
   def show
-    museums = Museum.find(params[:id])
-    render json: {data: museums}
+
+  end
+
+  def update
+    @museum.update(museum_params)
+    render :index
   end
 
   private
@@ -37,9 +43,8 @@ class Api::V1::MuseumsController < Api::V1::BaseController
     params.require(:museum).permit(:latitude, :longitude)
   end
 
-  def render_error
-    render json: { errors: @museum.errors.full_messages },
-      status: :unprocessable_entity
-  end
-
+    def set_museum
+      @museum = Museum.find(params[:id])
+      authorize @museum  # For Pundit
+    end
 end
