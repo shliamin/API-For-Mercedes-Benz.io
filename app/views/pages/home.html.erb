@@ -1,24 +1,17 @@
-
-
-
-<!-- <h1>GO TO <a href="https://mercedesapiefim.herokuapp.com/api/v1/museums">API</a></h1> -->
-
-<!-- <form action="/requests" method="post">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <label for="latitude">Latitude: </label>
-  <input type="text" name="request[latitude]" id="name">
-
-  <label for="longitude">Longitude: </label>
-  <input type="text" name="request[longitude]" id="address">
-
-  <input type="submit">
-</form>
- -->
-<% @request = Request.new%>
- <%= form_for @request do |f|%>
- <%= f.label :latitude, "Enter a latitude"%>
- <%= f.text_field :latitude %>
- <%= f.label :longitude, "Enter a longitude"%>
- <%= f.text_field :longitude %>
- <%= f.submit %>
- <% end%>
+<div id ="info">
+  <h2>Test assignment</h2>
+  <h3>This is the app that creates JSON application programming interfaces based on your latitude and longitude requests to help you build your geocoding-software</h3>
+  <h3>The application uses MapBox JSON-APIs and returns you a JSON-file with all museums near the given geographic coordinates</h3>
+  <h3>Enter your data in the box below or try this:</h3>
+  <h6>🇺🇸 New York - latitude: <span class="numbers">40.730610</span> and longitude: <span class="numbers">-73.935242</span> </h6>
+  <h6>🇷🇺 Moscow - latitude: <span class="numbers">55.7558</span> and longitude: <span class="numbers">37.6173</span></h6>
+  <h6>🇩🇪 Berlin - latitude: <span class="numbers">52.5200</span> and longitude: <span class="numbers">13.4050</span></h6>
+  <% @request = Request.new%>
+    <%= form_for @request do |f|%>
+    <%= f.label :latitude, "Enter a latitude:"%>
+    <%= f.text_field :latitude %>
+    <%= f.label :longitude, "Enter a longitude:"%>
+    <%= f.text_field :longitude %>
+    <%= f.submit "Get the API" %>
+  <% end%>
+</div>

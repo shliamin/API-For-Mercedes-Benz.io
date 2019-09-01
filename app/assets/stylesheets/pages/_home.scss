@@ -1,13 +1,28 @@
+h6{
+  font-family: 'Livvic', sans-serif;
+  padding-top: 5px;
+  padding-bottom: 2px;
+}
 
-h1{
+h3{
+  font-family: 'Livvic', sans-serif;
+  padding-top: 30px;
+}
+
+h2{
+  font-family: 'Abel', sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  padding-top: 20px;
+}
+
+.numbers{
+  color: green;
+}
+
+#info{
   text-align: center;
   justify-content: center;
-  font-size: 72px;
-  // position: absolute;
-  padding-top: 200px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
-
-.container{
-  padding-top: 200px;
-}
-
