@@ -4,4 +4,4 @@
     json.extract! museum, :id, :name, :position, :latitude, :longitude, :postcode
   end
 
-  # Museum.delete_all
+  Museum.delete_all

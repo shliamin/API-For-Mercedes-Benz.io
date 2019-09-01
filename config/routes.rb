@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   end
   root to: 'pages#home'
 
-  get 'pages#home', to: 'museums#index'
+  # get 'pages#home', to: 'museums#index'
 
 end
