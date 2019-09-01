@@ -26,16 +26,18 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
 
-    respond_to do |format|
-      if @request.save
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
-        format.json { render :show, status: :created, location: @request }
-      else
-        format.html { render :new }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
-      end
-    end
-    redirect_to "https://mercedesapiefim.herokuapp.com/api/v1/museums"
+    # respond_to do |format|
+    #   if @request.save
+    #     format.html { redirect_to @request, notice: 'Request was successfully created.' }
+    #     format.json { render :show, status: :created, location: @request }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @request.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
+    redirect_to("https://mercedesapiefim.herokuapp.com/api/v1/museums") and return
+    # render "/views/api/v1/museums/index"
   end
 
   # PATCH/PUT /requests/1
