@@ -1,5 +1,6 @@
 require 'json'
   require 'open-uri'
+  require 'yajl'
 
   latitude = Request.last.latitude
   longitude = Request.last.longitude
@@ -30,8 +31,36 @@ require 'json'
     end
   end
 
+
   json.array! @museums do |museum|
     json.extract! museum, :name, :position, :latitude, :longitude, :postcode
   end
+
+
+
+  # url2 = "https://mercedesapiefim.herokuapp.com/api/v1/museums"
+  # museum_serialized2 = open(url2).read
+  # mus2 = JSON.parse(museum_serialized2)
+
+  # postcodes = Hash.new
+  # mus2.group_by{ |h| [h['postcode']]}.each do |postcode, museums|
+  #   postcodes["#{postcode.first}"] = museums.each {|n| }
+    # puts "'#{postcode.first}' : #{museums.each {|n| }}"
+
+  end
+
+  # json.array! @postcodes.values do |postcode|
+  #   json.extract! postcode
+    # json.postcodes post.postcodes
+    # p postcodes.class
+  # end
+# p @postcodes
+  # p postcodes.class
+
+
+
+
+
+
 
   Museum.delete_all
