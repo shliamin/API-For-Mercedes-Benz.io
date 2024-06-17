@@ -3,10 +3,12 @@ body {
     margin: 0;
     padding: 0;
 }
+
 #map {
     height: 500px;
     width: 100%;
 }
+
 .form-container {
     margin: 20px;
 }
