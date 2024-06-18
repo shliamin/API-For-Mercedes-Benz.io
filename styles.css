@@ -26,29 +26,15 @@ body {
     padding-top: 5px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+#form {
+    text-align: center;
+    margin: 20px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-input[type="text"], input[type="number"] {
+#form input {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    margin: 5px;
+    font-size: 1em;
 }
 
 button {
@@ -60,6 +46,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s, transform 0.3s;
@@ -74,23 +61,8 @@ button:active {
     transform: translateY(0);
 }
 
-#map {
-    height: 500px;
-    width: 100%;
-    margin-top: 20px;
-}
-
 @media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    form {
-        flex-direction: column;
-        gap: 10px;
-    }
-
     #map {
-        height: 300px;
+        height: 400px;
     }
 }
