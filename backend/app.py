@@ -4,7 +4,7 @@ import requests
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 OVERPASS_URL = "http://overpass-api.de/api/interpreter"
 OVERPASS_QUERY = '[out:json];node(around:{radius},{lat},{lon})[tourism=museum];out;'
