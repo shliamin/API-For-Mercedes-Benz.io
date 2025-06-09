@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var searchCircle; // Variable to hold the search radius circle
 
-    // Function to find museums
-    async function findMuseums() {
+    // Function to find generic places
+    async function findPlaces() {
         var address = document.getElementById('address').value;
         var radius = document.getElementById('radius').value;
 
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 radius: radius // Radius in meters
             }).addTo(map);
 
-            // Fetch museums from your API
-            var apiResponse = await fetch(`https://geocodingapi-7cc21820406a.herokuapp.com/museums?lat=${lat}&lon=${lon}&radius=${radius}`);
-            var museums = await apiResponse.json();
+            // Fetch places from your API
+            var apiResponse = await fetch(`https://geocodingapi-7cc21820406a.herokuapp.com/places?lat=${lat}&lon=${lon}&radius=${radius}`);
+            var places = await apiResponse.json();
 
             // Clear existing markers
             map.eachLayer(function (layer) {
@@ -47,16 +47,20 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
 
-            // Add markers for each museum
-            museums.forEach(function (museum) {
-                var marker = L.marker([museum.lat, museum.lon]).addTo(map);
-                marker.bindPopup(`<b>${museum.name}</b><br>${museum.email ? 'Email: ' + museum.email + '<br>' : ''}${museum.phone ? 'Phone: ' + museum.phone + '<br>' : ''}${museum.website ? '<a href="' + museum.website + '" target="_blank">Website</a>' : ''}`);
+            // Add markers for each place
+            places.forEach(function (place) {
+                var name = place.tags && place.tags.name ? place.tags.name : 'Unnamed';
+                var marker = L.marker([place.lat, place.lon]).addTo(map);
+                var email = place.tags && place.tags.email ? 'Email: ' + place.tags.email + '<br>' : '';
+                var phone = place.tags && place.tags.phone ? 'Phone: ' + place.tags.phone + '<br>' : '';
+                var website = place.tags && place.tags.website ? '<a href="' + place.tags.website + '" target="_blank">Website</a>' : '';
+                marker.bindPopup(`<b>${name}</b><br>${email}${phone}${website}`);
             });
         } else {
             alert('Address not found');
         }
     }
 
-    // Make findMuseums function available globally
-    window.findMuseums = findMuseums;
+    // Make findPlaces function available globally
+    window.findPlaces = findPlaces;
 });
