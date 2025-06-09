@@ -7,10 +7,11 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 OVERPASS_URL = "http://overpass-api.de/api/interpreter"
-OVERPASS_QUERY = '[out:json];node(around:{radius},{lat},{lon})[tourism=museum];out;'
+# Query all nodes within the given radius around the coordinates
+OVERPASS_QUERY = '[out:json];node(around:{radius},{lat},{lon});out;'
 
-@app.route('/museums', methods=['GET'])
-def get_museums():
+@app.route('/places', methods=['GET'])
+def get_places():
     lat = request.args.get('lat')
     lon = request.args.get('lon')
     radius = request.args.get('radius', default=5000, type=int)
@@ -25,27 +26,17 @@ def get_museums():
         return jsonify({"error": "Error fetching data from Overpass API"}), 500
 
     data = response.json()
-    museums = []
+    places = []
     for element in data['elements']:
         tags = element.get("tags", {})
-        museums.append({
+        places.append({
             "id": element.get("id"),
             "lat": element.get("lat"),
             "lon": element.get("lon"),
-            "name": tags.get("name"),
-            "email": tags.get("email"),
-            "fee": tags.get("fee"),
-            "image": tags.get("image"),
-            "opening_hours": tags.get("opening_hours"),
-            "phone": tags.get("phone"),
-            "website": tags.get("website"),
-            "wheelchair": tags.get("wheelchair"),
-            "wikidata": tags.get("wikidata"),
-            "wikimedia_commons": tags.get("wikimedia_commons"),
-            "wikipedia": tags.get("wikipedia")
+            "tags": tags
         })
 
-    return jsonify(museums)
+    return jsonify(places)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

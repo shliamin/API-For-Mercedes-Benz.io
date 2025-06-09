@@ -5,7 +5,7 @@
 
 ## Overview
 
-This project provides a web application that allows users to search for museums around a specified address within a given radius. The application uses a backend API to fetch museum data and displays the results on an interactive map.
+This project provides a web application that allows users to search for various places around a specified address within a given radius. The application uses a backend API to fetch data from OpenStreetMap and displays the results on an interactive map.
 
 ## Frontend
 
@@ -14,7 +14,7 @@ The frontend of this project is built using HTML, CSS, and JavaScript. The inter
 ### Key Features
 - User inputs an address and search radius.
 - The application converts the address to geographic coordinates.
-- An interactive map displays markers for each museum found within the search radius.
+- An interactive map displays markers for each place found within the search radius.
 - The search radius is visually represented on the map.
 
 ### Libraries and Frameworks
@@ -25,11 +25,11 @@ The frontend of this project is built using HTML, CSS, and JavaScript. The inter
 
 ## Backend
 
-The backend of this project is built using [Flask](https://flask.palletsprojects.com/), a lightweight WSGI web application framework in Python. The backend API handles requests from the frontend to fetch museum data based on geographic coordinates.
+The backend of this project is built using [Flask](https://flask.palletsprojects.com/), a lightweight WSGI web application framework in Python. The backend API handles requests from the frontend to fetch OpenStreetMap data based on geographic coordinates.
 
 ### Key Features
-- Endpoint `/museums`: Accepts latitude, longitude, and radius as query parameters and returns a list of museums within the specified radius.
-- Uses the [Overpass API](https://overpass-api.de/) to fetch museum data from OpenStreetMap.
+- Endpoint `/places`: Accepts latitude, longitude, and radius as query parameters and returns a list of map objects within the specified radius.
+- Uses the [Overpass API](https://overpass-api.de/) to fetch data from OpenStreetMap.
 
 ### Libraries and Frameworks
 - Flask: For building the web server and API.
@@ -40,9 +40,9 @@ The backend of this project is built using [Flask](https://flask.palletsprojects
 
 1. **User Input**: The user inputs an address and a search radius on the frontend.
 2. **Geocoding**: The frontend sends a request to the Nominatim API to convert the address into geographic coordinates (latitude and longitude).
-3. **API Request**: The frontend sends the coordinates and radius to the backend API endpoint `/museums`.
-4. **Data Fetching**: The backend API uses the Overpass API to fetch data about museums within the specified radius.
-5. **Data Display**: The frontend receives the list of museums and displays them as markers on the Leaflet map, with a circle representing the search radius.
+3. **API Request**: The frontend sends the coordinates and radius to the backend API endpoint `/places`.
+4. **Data Fetching**: The backend API uses the Overpass API to fetch data about all map objects within the specified radius.
+5. **Data Display**: The frontend receives the list of places and displays them as markers on the Leaflet map, with a circle representing the search radius.
 
 ## How to Run
 
@@ -57,5 +57,5 @@ The backend of this project is built using [Flask](https://flask.palletsprojects
 
 1. Open the web application in a browser.
 2. Enter an address and a search radius.
-3. Click the "Search" button to view museums on the map within the specified radius.
+3. Click the "Search" button to view places on the map within the specified radius.
 
