@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Add new search radius circle
             searchCircle = L.circle([lat, lon], {
                 color: 'blue',
-                fillColor: '#blue',
+                fillColor: 'blue',
                 fillOpacity: 0.2,
                 radius: radius // Radius in meters
             }).addTo(map);
